@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         color: Colors.textHeading, 
-        fontSize: 16
+        fontSize: 28,
+        fontFamily: 'Montserrat-Bold'
     }
 })

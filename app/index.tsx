@@ -1,7 +1,8 @@
 import { WorkoutList } from "@/components/WorkoutList";
+import { Colors } from "@/constants/Colors";
 import { useAppService } from "@/services/AppService";
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 export type WorkoutListSequenceType = {
     complex: number[],
@@ -21,7 +22,7 @@ const WorkoutListScreen: React.FC = () => {
 
     return (
         <View style={{flex:1}}>
-            <Text style={{ marginTop: 50, marginBottom: 10 }}>Комплексные тренировки</Text>
+            <Text style={[styles.heading]}>Комплексные тренировки</Text>
             <WorkoutList workoutIDs={workouts?.complex}/>
         </View>
         
@@ -29,3 +30,12 @@ const WorkoutListScreen: React.FC = () => {
 }
 
 export default WorkoutListScreen
+
+const styles = StyleSheet.create({
+    heading: {
+        marginTop: 50, 
+        marginBottom: 10,
+        fontFamily: 'Montserrat-SemiBold',
+        color: Colors.textCommon
+    }
+})
