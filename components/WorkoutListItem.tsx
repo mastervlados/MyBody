@@ -1,7 +1,12 @@
 import { Colors } from "@/constants/Colors";
 import { useAppService } from "@/services/AppService";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, ImageBackground, StyleSheet, Text, View } from "react-native";
+
+export type WorkoutListItemType = {
+    workoutID: number,
+    workoutName: string
+}
 
 export type WorkoutListItemProps = {
     workoutID: number
@@ -11,20 +16,20 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
     workoutID
 }) => {
 
-    // preview image
-    const [isPreviewLoading, setPreviewLoaded] = useState<boolean>(true)
     // data
-    const [isDataLoading, setDataLoaded] = useState<boolean>(true)
+    const [isDataLoading, setDataLoading] = useState<boolean>(true)
+    const [data, setData] = useState<WorkoutListItemType | undefined>(undefined)
 
     const service = useAppService()
 
     useEffect(() => {
         (async () => {
-            console.log(workoutID)
+            setData(await service.getWorkoutListItemDataByID(workoutID));
+            setDataLoading(false)
         })();
     }, []);
 
-    if (isPreviewLoading || isDataLoading) {
+    if (isDataLoading) {
         return (
             <View style={[styles.container, styles.containerWithLoadingIndicator]}>
                 <ActivityIndicator 
@@ -37,7 +42,14 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
     }
 
     return (
-        <Text>text</Text>
+        <ImageBackground
+            style={[styles.container, styles.containerWithWorkoutData]}
+            source={service.getWorkoutPreviewByID(workoutID)}
+        >
+            <Text style={[styles.heading]}>
+                { data?.workoutName }
+            </Text>
+        </ImageBackground>
     )
 }
 
@@ -46,11 +58,19 @@ const styles = StyleSheet.create({
         height: 200,
         width: 300,
         borderRadius: 20,
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     containerWithLoadingIndicator: {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.figure
+    },
+    containerWithWorkoutData: {
+        padding: 10,
+        justifyContent: 'flex-end'
+    },
+    heading: {
+        color: Colors.textHeading, 
+        fontSize: 16
     }
 })
