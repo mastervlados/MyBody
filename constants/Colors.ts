@@ -6,6 +6,6 @@ export const Colors = {
     numberColor: '#E8BCC1',
     textCommon: '#3D3C39',
     darker: '#952E3F',
-    bacground: '#FFFFFF',
+    background: '#FFFFFF',
     textHeading: '#FFFFFF'
 }

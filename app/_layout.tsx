@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -15,13 +16,28 @@ export default function RootLayout() {
 
   return (
     <>
-      <Stack>
+      <Stack screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.primary
+        },
+        headerTintColor: Colors.background,
+        contentStyle: {
+          backgroundColor: Colors.background
+        }
+      }}>
         <Stack.Screen 
-          name="index" 
-          options={{ headerShown: false }}
+          name="index"
+          options={{ 
+            headerShown: true,
+            title: 'Александра Терентьева'
+          }}
+        />
+        <Stack.Screen 
+          name="workout-overview-screen"
+          options={{ headerShown: true }}
         />
       </Stack>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
     </>
   );
 }
