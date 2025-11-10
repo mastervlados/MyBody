@@ -1,5 +1,6 @@
 import { WorkoutListSequenceType } from "@/app";
 import { WorkoutListItemType } from "@/components/WorkoutListItem";
+import { WorkoutOverviewListType } from "@/components/WorkoutOverviewList";
 import { ImageURISource } from "react-native";
 
 export default class AppService {
@@ -53,4 +54,23 @@ export default class AppService {
           
           return result
     }
+
+    getTilePreviewByID(workoutID: number, numberInSequence: number): ImageURISource {
+      return {
+          uri: `${this.base}/workouts/${workoutID}/${workoutID}${numberInSequence}/preview.png`
+      }
+    }
+
+    async getTilesListDataByID(workoutID: number): Promise<WorkoutOverviewListType> {
+      const response = await fetch(`${this.base}/workouts/${workoutID}/overview-list-data.json`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+          }
+        });
+        
+        const result: WorkoutOverviewListType = (await response.json()) as WorkoutOverviewListType;
+        
+        return result
+  }
 }

@@ -1,5 +1,6 @@
 import { WorkoutList } from "@/components/WorkoutList";
 import { Colors } from "@/constants/Colors";
+import { Dimensions } from "@/constants/Dimensions";
 import { useAppService } from "@/services/AppService";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
         marginTop: 50, 
         marginBottom: 10,
         fontFamily: 'Montserrat-SemiBold',
-        color: Colors.textCommon
+        color: Colors.textCommon,
+        marginLeft: Dimensions.edgeWidth
     }
 })

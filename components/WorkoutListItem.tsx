@@ -1,7 +1,9 @@
 import { Colors } from "@/constants/Colors";
+import { Dimensions } from "@/constants/Dimensions";
 import { useAppService } from "@/services/AppService";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, ImageBackground, StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 export type WorkoutListItemType = {
     workoutID: number,
@@ -41,15 +43,32 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
         )
     }
 
+    const handlePress = () => {
+        // routing
+        router.navigate({
+            pathname: '/workout-overview-screen',
+            params: {
+                pickedWorkoutID: workoutID,
+                pickedWorkoutTitle: data?.workoutName
+            }
+        })
+    }
+
     return (
-        <ImageBackground
-            style={[styles.container, styles.containerWithWorkoutData]}
-            source={service.getWorkoutPreviewByID(workoutID)}
+        <TouchableHighlight 
+            onPress={handlePress}
+            style={[styles.container]}
+            underlayColor={Colors.figure}
         >
-            <Text style={[styles.heading]}>
-                { data?.workoutName }
-            </Text>
-        </ImageBackground>
+            <ImageBackground
+                style={[styles.container, styles.containerWithWorkoutData, { marginLeft: 0 }]}
+                source={service.getWorkoutPreviewByID(workoutID)}
+            >
+                <Text style={[styles.heading]}>
+                    { data?.workoutName }
+                </Text>
+            </ImageBackground>
+        </TouchableHighlight>
     )
 }
 
@@ -59,6 +78,7 @@ const styles = StyleSheet.create({
         width: 300,
         borderRadius: 20,
         overflow: 'hidden',
+        marginLeft: Dimensions.edgeWidth
     },
     containerWithLoadingIndicator: {
         justifyContent: 'center',
