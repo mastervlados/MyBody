@@ -1,3 +1,4 @@
+import { Dimensions } from "@/constants/Dimensions"
 import { FlatList } from "react-native"
 import { WorkoutListItem } from "./WorkoutListItem"
 
@@ -19,6 +20,9 @@ export const WorkoutList: React.FC<WorkoutListProps> = ({
             data={workoutIDs}
             keyExtractor={item => `workout-${item}`}
             renderItem={item => <WorkoutListItem workoutID={item.item}/>}
+            contentContainerStyle={{
+                paddingEnd: Dimensions.edgeWidth
+            }}
         />
     )
 }

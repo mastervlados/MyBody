@@ -20,7 +20,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.velizarov.MyBody"
+      "package": "com.vladelizarov.mybody"
     },
     "web": {
       "output": "static",
