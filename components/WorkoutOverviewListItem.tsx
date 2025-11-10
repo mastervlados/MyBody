@@ -3,6 +3,8 @@ import { useAppService } from "@/services/AppService";
 import React from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { TileItemType } from "./WorkoutOverviewList";
+import ClockIcon from "./ui/ClockIcon";
+import PlayIcon from "./ui/PlayIcon";
 
 export type WorkoutOverviewListItemProps = {
     workoutID: number 
@@ -22,13 +24,16 @@ export const WorkoutOverviewListItem: React.FC<WorkoutOverviewListItemProps> = (
                 source={service.getTilePreviewByID(workoutID, numberInSequence)}
                 style={[styles.image]}
             >
-
+                <View style={[styles.durationContainer]}>
+                    <ClockIcon iconColor={Colors.primary} iconSize={14}/>
+                    <Text style={[styles.durationText]}>{duration}</Text>
+                </View>
             </ImageBackground>
             <View style={[styles.body]}>
                 <Text style={[styles.partName]}>{partName}</Text>
                 <View style={[styles.footer]}>
-                    <View>
-                        <Text>{numberInSequence}</Text>
+                    <View style={[styles.iconContainer]}>
+                        <PlayIcon iconColor={Colors.primary} iconSize={36}/>
                     </View>
                     <View style={[styles.numberShape]}>
                         <Text style={[styles.numberValue]}>{numberInSequence}</Text>
@@ -69,7 +74,10 @@ const styles = StyleSheet.create({
         width: 135,
         height: 90,
         borderRadius: 20,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        padding: 10
     },
     body: {
         flex: 1,
@@ -78,5 +86,23 @@ const styles = StyleSheet.create({
     footer: {
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    iconContainer: {
+        width: 36,
+        height: 36,
+        borderRadius: 36,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    durationContainer: {
+        backgroundColor: Colors.background,
+        borderRadius: 14,
+        padding: 2,
+        flexDirection: 'row'
+    },
+    durationText: {
+        fontSize: 10,
+        fontFamily: 'Montserrat-Medium',
+        color: Colors.textCommon
     }
 })
