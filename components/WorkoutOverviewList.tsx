@@ -49,6 +49,15 @@ export const WorkoutOverviewList: React.FC<WorkoutOverviewListProps> = ({ workou
                 data={data?.items}
                 renderItem={({ item }: { item: TileItemType }) => <WorkoutOverviewListItem workoutID={workoutID} {...item}/>}
                 numColumns={2}
+                columnWrapperStyle={{
+                    justifyContent: 'space-between',
+                    marginBottom: 10
+                }}
+                contentContainerStyle={{
+                    paddingBottom: 200
+                }}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     )
@@ -63,6 +72,8 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         backgroundColor: Colors.area,
         marginHorizontal: Dimensions.edgeWidth,
-        marginTop: Dimensions.edgeWidth * 0.8
+        marginTop: Dimensions.edgeWidth * 0.8,
+        paddingTop: Dimensions.edgeWidth * 1.8,
+        paddingHorizontal: 10
     }
 })
