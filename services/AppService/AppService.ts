@@ -1,6 +1,7 @@
 import { WorkoutListSequenceType } from "@/app";
 import { WorkoutListItemType } from "@/components/WorkoutListItem";
 import { WorkoutOverviewListType } from "@/components/WorkoutOverviewList";
+import { VideoSource } from "expo-video";
 import { ImageURISource } from "react-native";
 
 export default class AppService {
@@ -72,5 +73,9 @@ export default class AppService {
         const result: WorkoutOverviewListType = (await response.json()) as WorkoutOverviewListType;
         
         return result
+  }
+
+  getVideoSourceByID(workoutID: number, numberInSequence: number): VideoSource {
+    return `${this.base}/workouts/${workoutID}/${workoutID}${numberInSequence}/video.mp4`
   }
 }

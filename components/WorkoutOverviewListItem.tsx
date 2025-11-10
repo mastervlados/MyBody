@@ -1,7 +1,8 @@
 import { Colors } from "@/constants/Colors";
 import { useAppService } from "@/services/AppService";
+import { router } from "expo-router";
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
 import { TileItemType } from "./WorkoutOverviewList";
 import ClockIcon from "./ui/ClockIcon";
 import PlayIcon from "./ui/PlayIcon";
@@ -18,8 +19,22 @@ export const WorkoutOverviewListItem: React.FC<WorkoutOverviewListItemProps> = (
 }) => {
     const service = useAppService()
 
+    const handlePress = () => {
+        router.navigate({
+            pathname: '/part-shower-modal',
+            params: {
+                triggerNumberInSequence: numberInSequence,
+                triggerWorkoutID: workoutID,
+                triggerPartName: partName
+            }
+        })
+    }
+
     return (
-        <View style={[styles.container]}>
+        <Pressable 
+            onPress={handlePress}
+            style={[styles.container]}
+        >
             <ImageBackground
                 source={service.getTilePreviewByID(workoutID, numberInSequence)}
                 style={[styles.image]}
@@ -40,7 +55,7 @@ export const WorkoutOverviewListItem: React.FC<WorkoutOverviewListItemProps> = (
                     </View>
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

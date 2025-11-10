@@ -34,7 +34,19 @@ export default function RootLayout() {
         />
         <Stack.Screen 
           name="workout-overview-screen"
-          options={{ headerShown: true }}
+          options={{ 
+            headerShown: true,
+            animation: 'slide_from_bottom'
+          }}
+        />
+        <Stack.Screen 
+          name="part-shower-modal"
+          options={{ 
+            headerShown: true, 
+            presentation: 'containedTransparentModal',
+            animation: 'none',
+            contentStyle: { backgroundColor: 'transparent' },
+          }}
         />
       </Stack>
       <StatusBar style="light" />
