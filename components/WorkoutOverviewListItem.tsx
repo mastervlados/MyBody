@@ -3,6 +3,7 @@ import { useAppService } from "@/services/AppService";
 import { router } from "expo-router";
 import React from "react";
 import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 import { TileItemType } from "./WorkoutOverviewList";
 import ClockIcon from "./ui/ClockIcon";
 import PlayIcon from "./ui/PlayIcon";
@@ -31,31 +32,35 @@ export const WorkoutOverviewListItem: React.FC<WorkoutOverviewListItemProps> = (
     }
 
     return (
-        <Pressable 
-            onPress={handlePress}
-            style={[styles.container]}
+        <Animated.View
+            entering={FadeInDown.duration(500)}
         >
-            <ImageBackground
-                source={service.getTilePreviewByID(workoutID, numberInSequence)}
-                style={[styles.image]}
+            <Pressable 
+                onPress={handlePress}
+                style={[styles.container]}
             >
-                <View style={[styles.durationContainer]}>
-                    <ClockIcon iconColor={Colors.primary} iconSize={14}/>
-                    <Text style={[styles.durationText]}>{duration}</Text>
-                </View>
-            </ImageBackground>
-            <View style={[styles.body]}>
-                <Text style={[styles.partName]}>{partName}</Text>
-                <View style={[styles.footer]}>
-                    <View style={[styles.iconContainer]}>
-                        <PlayIcon iconColor={Colors.primary} iconSize={36}/>
+                <ImageBackground
+                    source={service.getTilePreviewByID(workoutID, numberInSequence)}
+                    style={[styles.image]}
+                >
+                    <View style={[styles.durationContainer]}>
+                        <ClockIcon iconColor={Colors.primary} iconSize={14}/>
+                        <Text style={[styles.durationText]}>{duration}</Text>
                     </View>
-                    <View style={[styles.numberShape]}>
-                        <Text style={[styles.numberValue]}>{numberInSequence}</Text>
+                </ImageBackground>
+                <View style={[styles.body]}>
+                    <Text style={[styles.partName]}>{partName}</Text>
+                    <View style={[styles.footer]}>
+                        <View style={[styles.iconContainer]}>
+                            <PlayIcon iconColor={Colors.primary} iconSize={36}/>
+                        </View>
+                        <View style={[styles.numberShape]}>
+                            <Text style={[styles.numberValue]}>{numberInSequence}</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
-        </Pressable>
+            </Pressable>
+        </Animated.View>
     )
 }
 

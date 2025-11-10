@@ -4,6 +4,7 @@ import { useAppService } from "@/services/AppService";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, ImageBackground, StyleSheet, Text, TouchableHighlight, View } from "react-native";
+import Animated, { FadeIn } from "react-native-reanimated";
 
 export type WorkoutListItemType = {
     workoutID: number,
@@ -55,20 +56,24 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
     }
 
     return (
-        <TouchableHighlight 
-            onPress={handlePress}
-            style={[styles.container]}
-            underlayColor={Colors.figure}
+        <Animated.View
+            entering={FadeIn.duration(500)}
         >
-            <ImageBackground
-                style={[styles.container, styles.containerWithWorkoutData, { marginLeft: 0 }]}
-                source={service.getWorkoutPreviewByID(workoutID)}
+            <TouchableHighlight 
+                onPress={handlePress}
+                style={[styles.container]}
+                underlayColor={Colors.figure}
             >
-                <Text style={[styles.heading]}>
-                    { data?.workoutName }
-                </Text>
-            </ImageBackground>
-        </TouchableHighlight>
+                <ImageBackground
+                    style={[styles.container, styles.containerWithWorkoutData, { marginLeft: 0 }]}
+                    source={service.getWorkoutPreviewByID(workoutID)}
+                >
+                    <Text style={[styles.heading]}>
+                        { data?.workoutName }
+                    </Text>
+                </ImageBackground>
+            </TouchableHighlight>
+        </Animated.View>
     )
 }
 
