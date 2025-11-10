@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     },
     insideContainer: {
         flex: 1,
-        backgroundColor: Colors.numberArea
+        backgroundColor: Colors.background
     },
     player: {
         width: Dimensions.width,
