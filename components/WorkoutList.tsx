@@ -14,6 +14,8 @@ export const WorkoutList: React.FC<WorkoutListProps> = ({
 
     return (
         <FlatList
+            overScrollMode={'never'}
+            horizontal={true}
             data={workoutIDs}
             keyExtractor={item => `workout-${item}`}
             renderItem={item => <WorkoutListItem workoutID={item.item}/>}

@@ -45,6 +45,7 @@ export const WorkoutOverviewList: React.FC<WorkoutOverviewListProps> = ({ workou
     return (
         <View style={[styles.container]}>
             <FlatList<TileItemType>
+                overScrollMode={'never'}
                 keyExtractor={item => `tile-${item.numberInSequence}`}
                 data={data?.items}
                 renderItem={({ item }: { item: TileItemType }) => <WorkoutOverviewListItem workoutID={workoutID} {...item}/>}
