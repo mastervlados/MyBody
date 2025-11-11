@@ -27,6 +27,11 @@ export const CoachDetails: React.FC = () => {
                             </View>
                         </View>
                     </ExternalLink>
+                    <ExternalLink href={'https://light-vision.ucoz.ru/'}>
+                        <View style={[styles.policyContainer]}>
+                            <Text style={[styles.policy]}>Политика конфиденциальности</Text>
+                        </View>
+                    </ExternalLink>
                 </View>
 
             </View>
@@ -64,6 +69,7 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         width: 198,
+        justifyContent: 'space-around'
     },
     telegramContainer: {
         // borderWidth: 1,
@@ -88,5 +94,15 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginTop: 5,
+    },
+    policyContainer: {
+        height: 20,
+        justifyContent: 'flex-end',
+    },
+    policy: {
+        color: Colors.textCommon,
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 10.5,
+        textDecorationLine: 'underline',
     }
 })
