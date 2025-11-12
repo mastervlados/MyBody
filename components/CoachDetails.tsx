@@ -27,7 +27,7 @@ export const CoachDetails: React.FC = () => {
             />
             <View style={[styles.borderedContainer]}>
                 <View style={[styles.contentContainer]}>
-                    <ExternalLink href={'https://t.me/alexpohydei'}>
+                    <ExternalLink href={'https://t.me/alexpohydei'} style={{flex:1}}>
                         <View style={styles.telegramContainer}>
                             <Text style={[styles.heading]}>Фитнес тренер</Text>
                             <Text style={[styles.description]}>Канал об эффективном фитнесе:</Text>
@@ -40,7 +40,7 @@ export const CoachDetails: React.FC = () => {
                             </View>
                         </View>
                     </ExternalLink>
-                    <ExternalLink href={'https://light-vision.ucoz.ru/mybody/mybody_privacy_policy.txt'}>
+                    <ExternalLink href={'https://light-vision.ucoz.ru/mybody/mybody_privacy_policy.txt'} style={{flex:1}}>
                         <View style={[styles.policyContainer]}>
                             <Text style={[styles.policy]}>Политика конфиденциальности</Text>
                         </View>
