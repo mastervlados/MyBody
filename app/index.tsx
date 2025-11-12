@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontFamily: 'Montserrat-SemiBold',
         color: Colors.textCommon,
-        marginLeft: Dimensions.edgeWidth
+        marginLeft: Dimensions.edgeWidth,
+        fontSize: Dimensions.h4Size
     }
 })

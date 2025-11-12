@@ -5,12 +5,25 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { ExternalLink } from "./ExternalLink";
 import LinkIcon from "./ui/LinkIcon";
 
+const mainContainerAspectRatio = 223 / 340
+const mainContainerHeight = Dimensions.contentWidth * mainContainerAspectRatio
+
+const coachImageAspectRatio = 114 / 172
+const coachImageWidth = mainContainerHeight * coachImageAspectRatio
+
+const clickableContainerAspectRatio = 108 / 340
+const clickableContainerHeight = Dimensions.contentWidth * clickableContainerAspectRatio
+
+const contentContainerAspectRatio = 208 / 340
+const contentContainerWidth = Dimensions.contentWidth * contentContainerAspectRatio
+
 export const CoachDetails: React.FC = () => {
     return (
         <View style={[styles.container]}>
             <Image 
                 style={[styles.image]}
                 source={require('@/assets/images/coach.png')}
+                resizeMode='contain'
             />
             <View style={[styles.borderedContainer]}>
                 <View style={[styles.contentContainer]}>
@@ -21,7 +34,7 @@ export const CoachDetails: React.FC = () => {
                             <View style={{ flexDirection: 'row' }}>
                                 <Text style={[styles.link]}>t.me/alexpohydei</Text>
                                 <View style={[styles.icon]}>
-                                    <LinkIcon iconColor={Colors.primary} iconSize={11}/>
+                                    <LinkIcon iconColor={Colors.primary} iconSize={clickableContainerHeight * 0.11}/>
                                 </View>
                                 
                             </View>
@@ -42,7 +55,7 @@ export const CoachDetails: React.FC = () => {
 const styles = StyleSheet.create({
     container: {
         position: 'relative',
-        height: 223,
+        height: mainContainerHeight, // 223
         width: Dimensions.contentWidth,
         marginHorizontal: 'auto',
         justifyContent: 'flex-end',
@@ -50,17 +63,17 @@ const styles = StyleSheet.create({
     },
     borderedContainer: {
         width: Dimensions.contentWidth,
-        height: 108,
+        height: clickableContainerHeight, // 108
         borderColor: Colors.primary,
         borderWidth: 1,
         borderRadius: 20,
     },
     image: {
-        width: 114,
-        height: 223,
+        width: coachImageWidth, // 114
+        height: mainContainerHeight, // 223
         position: 'absolute',
         bottom: 0,
-        left: 20,
+        left: 1,
         zIndex: 999,
     },
     contentContainer: {
@@ -68,7 +81,7 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         bottom: 0,
-        width: 198,
+        width: contentContainerWidth, // 208
         justifyContent: 'space-around'
     },
     telegramContainer: {
@@ -78,21 +91,21 @@ const styles = StyleSheet.create({
     heading: {
         color: Colors.primary,
         fontFamily: 'Montserrat-Black',
-        fontSize: 16
+        fontSize: clickableContainerHeight * 0.16
     },
     description: {
         color: Colors.textCommon,
         fontFamily: 'Montserrat-Regular',
-        fontSize: 11
+        fontSize: clickableContainerHeight * 0.10
     },
     link: {
         color: Colors.textCommon,
         fontFamily: 'Montserrat-Bold',
-        fontSize: 11,
+        fontSize: clickableContainerHeight * 0.10,
         marginTop: 5,
-        marginEnd: 5,
     },
     icon: {
+        marginStart: 5,
         marginTop: 5,
     },
     policyContainer: {
@@ -102,7 +115,7 @@ const styles = StyleSheet.create({
     policy: {
         color: Colors.textCommon,
         fontFamily: 'Montserrat-Bold',
-        fontSize: 10.5,
+        fontSize: clickableContainerHeight * 0.095,
         textDecorationLine: 'underline',
     }
 })

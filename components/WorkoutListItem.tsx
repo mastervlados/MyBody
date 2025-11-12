@@ -6,6 +6,15 @@ import { useEffect, useState } from "react";
 import { ActivityIndicator, ImageBackground, StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 
+const containerAspectRatio = 200 / 340
+const containerHeight = Dimensions.contentWidth * containerAspectRatio
+
+const containerWidthAspectRatio = 300 / 340
+const containerWidth = Dimensions.contentWidth * containerWidthAspectRatio
+
+const titleSizeAspectRatio = 28 / 200 // same
+const titleSize = containerHeight * titleSizeAspectRatio
+
 export type WorkoutListItemType = {
     workoutID: number,
     workoutName: string
@@ -79,8 +88,8 @@ export const WorkoutListItem: React.FC<WorkoutListItemProps> = ({
 
 const styles = StyleSheet.create({
     container: {
-        height: 200,
-        width: 300,
+        height: containerHeight,
+        width: containerWidth, // 300
         borderRadius: 20,
         overflow: 'hidden',
         marginLeft: Dimensions.edgeWidth
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         color: Colors.textHeading, 
-        fontSize: 28,
+        fontSize: titleSize, // 28
         fontFamily: 'Montserrat-Bold'
     }
 })

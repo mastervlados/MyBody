@@ -67,7 +67,7 @@ export const WorkoutOverviewList: React.FC<WorkoutOverviewListProps> = ({ workou
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: 340,
+        width: Dimensions.contentWidth,
         borderTopStartRadius: 20,
         borderTopEndRadius: 20,
         overflow: 'hidden',

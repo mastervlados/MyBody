@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { Dimensions } from "@/constants/Dimensions";
 import { useAppService } from "@/services/AppService";
 import { router } from "expo-router";
 import React from "react";
@@ -7,6 +8,16 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 import { TileItemType } from "./WorkoutOverviewList";
 import ClockIcon from "./ui/ClockIcon";
 import PlayIcon from "./ui/PlayIcon";
+
+const containerHeightAspectRatio = 188 / 340
+const containerHeight = Dimensions.contentWidth * containerHeightAspectRatio
+const containerWidthAspectRatio = 155 / 340
+const containerWidth = Dimensions.contentWidth * containerWidthAspectRatio
+
+const imageHeightAspectRatio = 90 / 340
+const imageHeight = Dimensions.contentWidth * imageHeightAspectRatio
+const imageWidthAspectRatio = 135 / 340
+const imageWidth = Dimensions.contentWidth * imageWidthAspectRatio
 
 export type WorkoutOverviewListItemProps = {
     workoutID: number 
@@ -66,8 +77,8 @@ export const WorkoutOverviewListItem: React.FC<WorkoutOverviewListItemProps> = (
 
 const styles = StyleSheet.create({
     container: {
-        width: 155,
-        height: 188,
+        width: containerWidth, // 155
+        height: containerHeight, // 188
         borderRadius: 20,
         overflow: 'hidden',
         padding: 10,
@@ -75,7 +86,8 @@ const styles = StyleSheet.create({
     },
     partName: {
         fontSize: 16,
-        fontFamily: 'Montserrat-SemiBold'
+        fontFamily: 'Montserrat-SemiBold',
+        color: Colors.textCommon
     },
     numberShape: {
         width: 36,
@@ -91,8 +103,8 @@ const styles = StyleSheet.create({
         color: Colors.numberColor
     },
     image: {
-        width: 135,
-        height: 90,
+        width: imageWidth, // 135
+        height: imageHeight, // 90
         borderRadius: 20,
         overflow: 'hidden',
         justifyContent: 'flex-end',
