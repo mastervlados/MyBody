@@ -1,6 +1,13 @@
-# Welcome to your Expo app 👋
+# Welcome to MyBody app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
+
+
+| ![app icon](/assets/icon.png)  |  | |
+|-------|-----|-------|
+| ![app icon](/assets/Screenshot_1.jpg)  | ![app icon](/assets/Screenshot_2.jpg) |
+
 
 ## Get started
 
