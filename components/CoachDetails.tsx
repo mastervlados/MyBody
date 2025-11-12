@@ -40,7 +40,7 @@ export const CoachDetails: React.FC = () => {
                             </View>
                         </View>
                     </ExternalLink>
-                    <ExternalLink href={'https://light-vision.ucoz.ru/'}>
+                    <ExternalLink href={'https://light-vision.ucoz.ru/mybody/mybody_privacy_policy.txt'}>
                         <View style={[styles.policyContainer]}>
                             <Text style={[styles.policy]}>Политика конфиденциальности</Text>
                         </View>
